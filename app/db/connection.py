@@ -16,7 +16,10 @@ async def get_db_connection() -> Optional[asyncpg.Connection]:
         asyncpg.Connection: The database connection.
     """
     try:
-        conn = await asyncpg.connect(db_uri)
+        conn = await asyncpg.connect(
+            db_uri,
+            statement_cache_size=0,
+        )
         print("Connected to database")
         return conn
     except Exception as e:

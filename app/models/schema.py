@@ -8,14 +8,14 @@ class TechStackBase(BaseModel):
 class TechStackCreate(TechStackBase): pass
 
 class TechStack(TechStackBase):
-    id: UUID
+    id: int
 
 class ProjectBase(BaseModel):
     title: str
     description: Optional[str] = None
     github_url: HttpUrl
     demo_url: Optional[HttpUrl]=None
-    tech_stack_ids: List[UUID]=[]
+    tech_stack_ids: List[int]=[]
 
 class ProjectCreate(ProjectBase): pass
 

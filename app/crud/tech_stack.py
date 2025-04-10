@@ -8,11 +8,10 @@ async def create_tech_stack(tech_stack: TechStackCreate) -> TechStack:
     Create a new tech stack in the database
     """
     connection = await get_db_connection()
-    tech_stack_id = uuid.uuid4()
 
-    created = await connection.fetchrow(CREATE_TECH_STACK, tech_stack_id, tech_stack.name)
+    created = await connection.fetchrow(CREATE_TECH_STACK, tech_stack.name)
 
-    return TechStack({
-        "id": created["id"],
-        "name": created["name"]
-    })
+    return TechStack(
+        name = created["name"],
+        id = created["id"]
+    )
