@@ -12,15 +12,19 @@ async def create_tables():
                 title TEXT NOT NULL,
                 description TEXT,
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
-                                 
-            CREATE TABLE tech_stack (
+        """)
+
+        await connection.execute("""                 
+            CREATE TABLE IF NOT EXISTS tech_stack (
                 id SERIAL PRIMARY KEY,
                 name TEXT NOT NULL
             );
-                                 
-            CREATE TABLE project_tech_stack (
+        """)
+
+        await connection.execute("""          
+            CREATE TABLE IF NOT EXISTS project_tech_stack (
                 project_id UUID REFERENCES projects(id) ON DELETE CASCADE,
                 tech_stack_id INTEGER REFERENCES tech_stack(id) ON DELETE CASCADE,
                 PRIMARY KEY (project_id, tech_stack_id)

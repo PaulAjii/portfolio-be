@@ -1,6 +1,6 @@
 import os
 
-from dotenv.main import load_dotenv
+from dotenv import load_dotenv
 import asyncpg
 from typing import Optional
 
