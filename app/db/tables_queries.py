@@ -11,6 +11,8 @@ async def create_tables():
                 id UUID PRIMARY KEY,
                 title TEXT NOT NULL,
                 description TEXT,
+                github_url TEXT,
+                demo_url TEXT
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
                 updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             );
